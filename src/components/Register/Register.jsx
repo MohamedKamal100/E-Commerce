@@ -114,9 +114,10 @@
 
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
+
 
 export default function Register() {
   let navigate = useNavigate();
@@ -232,13 +233,20 @@ export default function Register() {
             </div>
           ))}
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-50"
-          >
-            {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
-          </button>
+          <div className="flex justify-between items-center">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-50"
+            >
+              {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
+            </button>
+            <span className="font-semibold mx-10">
+              <Link to={"/login"} className="hover:text-green-600 hover:underline text-slate-500">
+                Login Now
+              </Link>
+            </span>
+          </div>
         </form>
       </div>
     </div>

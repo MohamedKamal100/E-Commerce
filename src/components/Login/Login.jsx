@@ -243,7 +243,7 @@ export default function Login() {
             )}
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="sm:flex-col lg:flex-row justify-between items-center gap-6">
             <button
               type="submit"
               className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center flex items-center justify-center"
@@ -274,7 +274,7 @@ export default function Login() {
               )}
             </button>
 
-            <p>
+            <p className="my-4 text-bold text-blue-600 text-xl">
               Don't have an account?{" "}
               <span className="font-semibold">
                 <Link to={"/register"} className="text-green-600 hover:underline">
