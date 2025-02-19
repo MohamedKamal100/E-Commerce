@@ -19,7 +19,7 @@ export default function Details() {
   let [details, setDetails] = useState(null);
   let [relatedProducts, setRelatedProducts] = useState([]);
   let [loading, setLoading] = useState(true);
-  let [loadingAddToCart, setLoadingAddToCart] = useState(false); // حالة تحميل للزر
+  let [loadingAddToCart, setLoadingAddToCart] = useState(false);
   let [clickedProduct, setClickedProduct] = useState(null);
   let { id } = useParams();
   const navigate = useNavigate();
@@ -52,18 +52,17 @@ export default function Details() {
   }, [id]);
 
   function handleProductClick(productId) {
+    setDetails(null);
+    setRelatedProducts([]);
     setClickedProduct(productId);
     setLoading(true);
-    setTimeout(() => {
-      navigate(`/details/${productId}`);
-    }, 500);
+    navigate(`/details/${productId}`);
   }
 
   async function handleAddToCart(productId) {
     setLoadingAddToCart(true);
     try {
       await addToCart(productId);
-
     } catch (error) {
       toast.error('Failed to add to cart');
     } finally {
@@ -89,7 +88,7 @@ export default function Details() {
                 <img
                   key={index}
                   src={image}
-                  alt="Product Image"
+                  alt={`Image of ${details?.title}`}
                   className="w-full rounded-lg shadow-md transform transition duration-500 ease-in-out hover:scale-105 hover:translate-x-2"
                 />
               ))}
@@ -124,16 +123,20 @@ export default function Details() {
             {relatedProducts.map((product) => (
               <div
                 key={product._id}
-                className={`cursor-pointer bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition transform ${clickedProduct === product._id ? 'scale-95 opacity-70' : 'hover:scale-105'}`}
+                className={`cursor-pointer bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition transform 
+                  ${clickedProduct === product._id ? 'scale-95 opacity-70' : 'hover:scale-105'}
+                  flex flex-col md:flex-row`} // تعديل هنا
                 onClick={() => handleProductClick(product._id)}
               >
                 <img
                   src={product.imageCover}
                   alt={product.title}
-                  className="w-full h-40 object-cover rounded-md"
+                  className="w-full md:w-1/3 h-40 object-cover rounded-md"
                 />
-                <h3 className="mt-2 text-lg font-semibold text-gray-800">{product.title}</h3>
-                <p className="text-gray-600">{product.price} $</p>
+                <div className="mt-2 md:mt-0 md:ml-4 flex flex-col justify-center">
+                  <h3 className="text-lg font-semibold text-gray-800">{product.title}</h3>
+                  <p className="text-gray-600">{product.price} $</p>
+                </div>
               </div>
             ))}
           </div>

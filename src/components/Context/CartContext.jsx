@@ -97,7 +97,27 @@ export default function CartContextProvider({ children }) {
     getProductsCart()
   }, [])
 
-  return <CartContext.Provider value={{ addToCart, cart, updateProdCountToCart, removeProdFromCart }}>
+  async function CheckOut(cartId, url, formValue) {
+
+    return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`, {
+      shippingAddress: formValue
+    }
+      , { headers }
+    )
+      .then((response) => response)
+      .catch((err) => err)
+
+  }
+
+
+
+
+  useEffect(() => {
+    getProductsCart()
+  }, [])
+
+
+  return <CartContext.Provider value={{ CheckOut, addToCart, cart, updateProdCountToCart, removeProdFromCart }}>
 
     {children}
   </CartContext.Provider>

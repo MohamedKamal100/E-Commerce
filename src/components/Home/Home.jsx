@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import style from './Home.module.css';
-import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -8,7 +7,6 @@ import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 import ProductsCard from '../ProductsCard/ProductsCard';
 import { BeatLoader } from 'react-spinners';
-import { useQuery } from '@tanstack/react-query';
 import slider1 from '../../assets/images/slider-image-1.jpeg';
 import slider2 from '../../assets/images/slider-image-2.jpeg';
 import slider3 from '../../assets/images/slider-image-3.jpeg';
@@ -16,22 +14,14 @@ import slider4 from '../../assets/images/slider-2.jpeg';
 import useCategories from '../../Hooks/useCategories';
 import { Link } from 'react-router-dom';
 import useProducts from '../../Hooks/useProducts';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 export default function Home() {
   const { allCatProd, catLoad } = useCategories();
   const { allProducts, prodLoad, error } = useProducts();
 
-  // async function getAllProducts() {
-  //   return axios.get('https://ecommerce.routemisr.com/api/v1/products');
-  // }
-
-  // const { isLoading, data } = useQuery({
-  //   queryKey: ['allProducts'],
-  //   queryFn: getAllProducts,
-  //   refetchOnWindowFocus: false,
-  // });
-
-  // const allProductsData = data?.data?.data || [];
+  const sliderImages = [slider2, slider3]; // الصور الرئيسية في السلايدر
 
   return (
     <>
@@ -39,21 +29,28 @@ export default function Home() {
         {/* السلايدر الكبير */}
         <div className="grid grid-cols-6 gap-4">
           <div className="col-span-4">
-            <Swiper
-              slidesPerView={1}
-              loop={true}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              pagination={{ clickable: true }}
-              modules={[Autoplay, Pagination]}
-              className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px]"
-            >
-              <SwiperSlide>
-                <img className="w-full h-full object-cover rounded-lg" src={slider2} alt="Slide 1" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img className="w-full h-full object-cover rounded-lg" src={slider3} alt="Slide 2" />
-              </SwiperSlide>
-            </Swiper>
+            <PhotoProvider>
+              <Swiper
+                slidesPerView={1}
+                loop={true}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                modules={[Autoplay, Pagination]}
+                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px]"
+              >
+                {sliderImages.map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <PhotoView src={image}>
+                      <img
+                        className="w-full h-full object-cover rounded-lg cursor-pointer"
+                        src={image}
+                        alt={`Slide ${index + 1}`}
+                      />
+                    </PhotoView>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </PhotoProvider>
           </div>
 
           {/* الصور الجانبية */}
@@ -93,7 +90,7 @@ export default function Home() {
 
       {/* المنتجات */}
       {prodLoad ? (
-        <div className='w-full h-screen flex justify-center items-center'>
+        <div className="w-full h-screen flex justify-center items-center">
           <BeatLoader color="#22c55e" size={15} />
         </div>
       ) : (

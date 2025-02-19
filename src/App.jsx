@@ -16,6 +16,9 @@ import { WishlistProvider } from './components/Context/WishlistContext'
 import Gurad from './components/Gurad/Gurad'
 import AuthGurad from './components/AuthGurad/AuthGurad'
 
+
+
+
 import {
   QueryClient,
   QueryClientProvider,
@@ -24,6 +27,8 @@ import Details from './components/Details/Details'
 import Wishlist from './components/WishList/Wishlist'
 import CartContextProvider from './components/Context/CartContext'
 import { Toaster } from 'react-hot-toast'
+import CheckOut from './components/CheckOut/CheckOut'
+import AllOrders from './components/AllOrders/AllOrders'
 
 
 const queryClient = new QueryClient()
@@ -33,10 +38,12 @@ let router = createHashRouter([
     path: '', element: <Layout />, children: [
       { index: true, element: <Gurad><Home /></Gurad> },
       { path: 'about', element: <Gurad><About /></Gurad> },
+      { path: 'allorders', element: <Gurad><AllOrders /></Gurad> },
       { path: 'brands', element: <Gurad><Brands /></Gurad> },
       { path: 'wishlist', element: <Gurad><Wishlist /></Gurad> },
       { path: 'products/:brandId', element: <Gurad><Products /></Gurad> },
       { path: 'cart', element: <Gurad><Cart /></Gurad> },
+      { path: 'checkout', element: <Gurad><CheckOut /></Gurad> },
       { path: 'categories', element: <Gurad><Categories /></Gurad> },
       { path: 'login', element: <AuthGurad><Login /></AuthGurad> },
       { path: '*', element: <NotFound /> },

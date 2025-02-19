@@ -35,49 +35,53 @@ export default function Navbar() {
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        <ul className={`lg:flex lg:items-center absolute lg:static bg-white top-16 left-0 w-full lg:w-auto shadow-lg lg:shadow-none p-5 lg:p-0 transition-all duration-300 ${isOpen ? "block" : "hidden"}`}>
-          {token && [
-            { name: "Home", path: "/" },
-            { name: "Products", path: "/products" },
-            { name: "Categories", path: "/categories" },
-            { name: "Brands", path: "/brands" },
-          ].map((link, index) => (
-            <li key={index} className="py-2 lg:py-0">
+        {token && (
+          <ul className={`lg:flex lg:items-center absolute lg:static bg-white top-16 left-0 w-full lg:w-auto shadow-lg lg:shadow-none p-5 lg:p-0 transition-all duration-300 ${isOpen ? "block" : "hidden"}`}>
+            {[
+              { name: "Home", path: "/" },
+              { name: "Products", path: "/products" },
+              { name: "Categories", path: "/categories" },
+              { name: "Brands", path: "/brands" },
+
+            ].map((link, index) => (
+              <li key={index} className="py-2 lg:py-0">
+                <NavLink
+                  className={({ isActive }) =>
+                    `text-md font-medium block px-4 py-2 rounded-lg lg:inline-block transition-colors duration-300 ${isActive ? "text-green-500" : "text-gray-800 hover:text-green-600"}`
+                  }
+                  to={link.path}
+                >
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
+
+            <li className="relative py-2 lg:py-0">
               <NavLink
-                className={({ isActive }) =>
-                  `text-md font-medium block px-4 py-2 rounded-lg lg:inline-block transition-colors duration-300 ${isActive ? "text-green-500" : "text-gray-800 hover:text-green-600"}`
-                }
-                to={link.path}
+                to="/wishlist"
+                className="text-md font-medium flex items-center px-4 py-2 rounded-lg lg:inline-block transition-colors duration-300 text-gray-800 hover:text-red-500"
               >
-                {link.name}
+                <FaHeart className="text-xl" />
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full animate-bounce">
+                  {wishlist?.length || 0}
+                </span>
               </NavLink>
             </li>
-          ))}
 
-          <li className="relative py-2 lg:py-0">
-            <NavLink
-              to="/wishlist"
-              className="text-md font-medium flex items-center px-4 py-2 rounded-lg lg:inline-block transition-colors duration-300 text-gray-800 hover:text-red-500"
-            >
-              <FaHeart className="text-xl" />
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full animate-bounce">
-                {wishlist?.length || 0}
-              </span>
-            </NavLink>
-          </li>
+            <li className="relative py-2 lg:py-0">
+              <NavLink
+                to="/cart"
+                className="text-md font-medium flex items-center px-4 py-2 rounded-lg lg:inline-block transition-colors duration-300 text-gray-800 hover:text-green-500"
 
-          <li className="relative py-2 lg:py-0">
-            <NavLink
-              to="/cart"
-              className="text-md font-medium flex items-center px-4 py-2 rounded-lg lg:inline-block transition-colors duration-300 text-gray-800 hover:text-green-500"
-            >
-              <FaShoppingCart className="text-xl relative" />
-              <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full animate-bounce">
-                {cart.numOfCartItems}
-              </span>
-            </NavLink>
-          </li>
-        </ul>
+              >
+                <FaShoppingCart className="text-xl relative" />
+                <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full animate-bounce">
+                  {cart?.numOfCartItems || 0}
+                </span>
+              </NavLink>
+            </li>
+          </ul>
+        )}
 
         <div className="lg:flex items-center hidden">
           {token ? (

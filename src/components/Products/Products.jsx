@@ -8,10 +8,11 @@ export default function Products() {
 
   return (
     <>
-      <h2 className="text-4xl font-extrabold px-6 py-2 text-gray-900 shadow-md tracking-wide rounded-lg text-center">
-        All Products
-      </h2>
-
+      <div className="flex justify-center items-center mb-6">
+        <h2 className="text-4xl font-extrabold px-6 py-2 bg-gradient-to-r from-green-500 via-white to-green-500 text-gray-900 shadow-md tracking-wide rounded-lg">
+          All Products
+        </h2>
+      </div>
 
       {prodLoad && (
         <div className="w-full h-screen flex justify-center items-center">
@@ -19,16 +20,14 @@ export default function Products() {
         </div>
       )}
 
-
       {error && (
         <div className="text-center text-red-500 font-bold my-4">
           Failed to load products. Please try again.
         </div>
       )}
 
-
       {!prodLoad && !error && (
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-3">
           {allProducts?.length > 0 ? (
             allProducts.map((product) => <ProductsCard key={product._id} product={product} />)
           ) : (
