@@ -80,6 +80,12 @@ export default function Navbar() {
                 </span>
               </NavLink>
             </li>
+            <button
+              onClick={logout}
+              className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-md text-white font-medium md:hidden"
+            >
+              Log Out
+            </button>
           </ul>
         )}
 
@@ -106,3 +112,7 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
+
+
