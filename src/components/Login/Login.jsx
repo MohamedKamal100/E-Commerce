@@ -4,6 +4,8 @@ import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import bg from '../../assets/images/image.png';
+
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
 
@@ -51,11 +53,18 @@ export default function Login() {
   });
 
   return (
+
     <div className="min-h-screen flex justify-center items-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-blue-500 to-indigo-600 animate-gradient-xy"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-blue-500 to-indigo-600 opacity-70 animate-gradient-xy"></div>
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${bg})` }}
+      ></div>
+
+
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+
       <div className="relative z-10 w-full max-w-md mx-auto backdrop-blur-md bg-white/30 rounded-2xl p-8 shadow-2xl">
-        <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">Login Now</h2>
+        <h2 className="text-3xl font-bold text-lime-400 mb-6 text-center">Login Now</h2>
 
         {apiError && (
           <div className="p-4 mb-4 text-sm text-red-800 bg-red-50 rounded-lg">{apiError}</div>
@@ -103,7 +112,7 @@ export default function Login() {
           <div className="sm:flex-col lg:flex-row justify-between items-center gap-6">
             <button
               type="submit"
-              className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center flex items-center justify-center"
+              className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center flex items-center justify-center "
               disabled={isLoading}
             >
               {isLoading ? (
@@ -131,10 +140,10 @@ export default function Login() {
               )}
             </button>
 
-            <p className="my-4 text-bold text-blue-600 text-lg">
+            <p className="my-4 text-bold text-slate-800 text-lg">
               Don't have an account?{" "}
               <span className="font-semibold">
-                <Link to={"/register"} className="text-green-600 text-sm hover:underline">
+                <Link to={"/register"} className="text-lime-400 text-sm hover:underline ">
                   Register Now
                 </Link>
               </span>
@@ -143,5 +152,6 @@ export default function Login() {
         </form>
       </div>
     </div>
+
   );
 }

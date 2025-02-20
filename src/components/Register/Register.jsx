@@ -1,10 +1,9 @@
-
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
-
+import bg from "../../assets/images/image.png"; // استيراد الصورة
 
 export default function Register() {
   let navigate = useNavigate();
@@ -62,10 +61,19 @@ export default function Register() {
   });
 
   return (
-    <div className="min-h-screen flex justify-center items-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-blue-500 to-indigo-600 animate-gradient-xy"></div>
+    <div
+      className="min-h-screen flex justify-center items-center relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+
+      <div className="absolute inset-0 bg-black opacity-40"></div>
+
       <div className="relative z-10 container max-w-lg mx-auto backdrop-blur-sm bg-white/50 shadow-lg rounded-2xl p-8">
-        <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">Register Now</h2>
+        <h2 className="text-3xl font-bold text-lime-400 mb-6 text-center">Register Now</h2>
 
         {apiError && (
           <div className="p-4 mb-4 text-sm text-red-800 bg-red-50 rounded-lg">{apiError}</div>
@@ -129,7 +137,7 @@ export default function Register() {
               {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
             </button>
             <span className="font-semibold mx-10">
-              <Link to={"/login"} className="hover:text-green-600 hover:underline text-green-800">
+              <Link to={"/login"} className="hover:text-lime-400 hover:underline text-lime-800">
                 Login Now
               </Link>
             </span>
