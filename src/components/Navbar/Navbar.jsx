@@ -1,3 +1,6 @@
+
+
+
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
@@ -5,7 +8,7 @@ import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
 
 import logo from "../../assets/images/logo.svg";
-import { FaBars, FaTimes, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { FaBars, FaTimes, FaHeart, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 
 export default function Navbar() {
   const { token, setToken } = useContext(AuthContext);
@@ -87,8 +90,9 @@ export default function Navbar() {
             </li>
             <button
               onClick={logout}
-              className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-md text-white font-medium md:hidden"
+              className="flex items-center bg-black hover:bg-gray-800 px-4 py-2 rounded-md text-white font-medium md:hidden"
             >
+              <FaSignOutAlt className="mr-2" />
               Log Out
             </button>
           </ul>
@@ -98,8 +102,9 @@ export default function Navbar() {
           {token ? (
             <button
               onClick={logout}
-              className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-md text-white font-medium"
+              className="flex items-center bg-black hover:bg-gray-800 px-4 py-2 rounded-md text-white font-medium"
             >
+              <FaSignOutAlt className="mr-2" />
               Log Out
             </button>
           ) : (
@@ -117,7 +122,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-
-
-

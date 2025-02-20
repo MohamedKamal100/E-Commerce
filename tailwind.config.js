@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
       animation: {
         'gradient-xy': 'gradient-xy 3s ease infinite',
         'fade-in-out': 'fade-in-out 3s ease-in-out infinite',

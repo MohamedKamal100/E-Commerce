@@ -72,6 +72,7 @@ export default function Login() {
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                placeholder="Enter Your Email"
                 className="w-full p-3 mt-1 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               {formik.errors.email && formik.touched.email && (

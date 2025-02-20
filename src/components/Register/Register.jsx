@@ -84,6 +84,7 @@ export default function Register() {
               <input
                 type={field}
                 name={field}
+                placeholder={field}
                 value={formik.values[field]}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -103,6 +104,7 @@ export default function Register() {
               <input
                 type={(field === "password" && !showPassword) || (field === "rePassword" && !showRePassword) ? "password" : "text"}
                 name={field}
+                placeholder={field}
                 value={formik.values[field]}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}

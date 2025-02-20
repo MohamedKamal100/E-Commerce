@@ -21,7 +21,7 @@ export default function Home() {
   const { allCatProd, catLoad } = useCategories();
   const { allProducts, prodLoad, error } = useProducts();
 
-  const sliderImages = [slider2, slider3]; // الصور الرئيسية في السلايدر
+  const sliderImages = [slider2, slider3];
 
   return (
     <>
@@ -53,14 +53,12 @@ export default function Home() {
             </PhotoProvider>
           </div>
 
-          {/* الصور الجانبية */}
           <div className="col-span-2 flex flex-col gap-4">
             <img src={slider1} className="h-1/2 w-full object-cover rounded-lg" alt="Side 1" />
             <img src={slider4} className="h-1/2 w-full object-cover rounded-lg" alt="Side 2" />
           </div>
         </div>
 
-        {/* سلايدر الفئات */}
         <div className="mt-6">
           <Swiper
             slidesPerView={2}
@@ -88,7 +86,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* المنتجات */}
       {prodLoad ? (
         <div className="w-full h-screen flex justify-center items-center">
           <BeatLoader color="#22c55e" size={15} />
