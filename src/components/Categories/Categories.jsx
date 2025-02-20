@@ -12,9 +12,13 @@ export default function Categories() {
         <div className='w-full h-screen flex justify-center items-center'>
           <BeatLoader color="#22c55e" size={15} />
         </div>
-      ) : (
+      ) : (<>
+        <div className="flex justify-center items-center mb-6">
+          <h2 className="text-4xl font-extrabold px-6 py-2 bg-gradient-to-r from-green-500 via-white to-green-500 text-gray-900 shadow-md tracking-wide rounded-lg space-x-2">
+            All Categories
+          </h2>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-10">
-          <h2 className="text-4xl font-extrabold text-center mb-6 text-green-700">Our Brands</h2>
 
           {allCatProd?.data?.data.map((cat) => (
             <Link key={cat._id} to={`/products?category=${cat._id}`}>
@@ -27,7 +31,7 @@ export default function Categories() {
             </Link>
           ))}
         </div>
-      )}
+      </>)}
     </>
   )
 }

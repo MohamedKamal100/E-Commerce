@@ -24,8 +24,8 @@ export default {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         'fade-in-out': {
-          '0%, 100%': { opacity: '0.5' },
-          '50%': { opacity: '1' },
+          '0%, 100%': { opacity: '0.7' },
+          '50%': { opacity: '1.5' },
         },
       },
     },

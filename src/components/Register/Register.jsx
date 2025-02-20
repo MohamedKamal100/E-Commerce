@@ -129,7 +129,7 @@ export default function Register() {
               {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
             </button>
             <span className="font-semibold mx-10">
-              <Link to={"/login"} className="hover:text-green-600 hover:underline text-slate-500">
+              <Link to={"/login"} className="hover:text-green-600 hover:underline text-green-800">
                 Login Now
               </Link>
             </span>

@@ -28,9 +28,9 @@ export default function Navbar() {
     <nav className="bg-white shadow-md fixed w-full top-0 left-0 right-0 z-50">
       <div className="container mx-auto py-3 flex justify-between items-center px-5">
         {/* Logo */}
-        <div className="flex items-center space-x-4">
+        <NavLink to={'/'} ><div className="flex items-center space-x-4 cursor-pointer">
           <img src={logo} width={120} alt="Fresh Cart Logo" />
-        </div>
+        </div></NavLink>
 
         <button
           className="lg:hidden text-gray-800 text-2xl"

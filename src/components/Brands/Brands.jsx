@@ -19,8 +19,11 @@ export default function Brands() {
 
   return (
     <div className="container mx-auto py-10">
-      <h2 className="text-4xl font-extrabold text-center mb-6 text-green-700">Our Brands</h2>
-
+      <div className="flex justify-center items-center mb-6">
+        <h2 className="text-4xl font-extrabold px-6 py-2 bg-gradient-to-r from-green-500 via-white to-green-500 text-gray-900 shadow-md tracking-wide rounded-lg space-x-2">
+          All Brands
+        </h2>
+      </div>
       {isLoading ? (
         <div className="flex justify-center items-center h-screen">
           <BeatLoader color="#22c55e" size={15} />
