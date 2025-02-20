@@ -34,6 +34,7 @@ import AllOrders from './components/AllOrders/AllOrders'
 const queryClient = new QueryClient()
 
 let router = createHashRouter([
+
   {
     path: '', element: <Layout />, children: [
       { index: true, element: <Gurad><Home /></Gurad> },
@@ -41,14 +42,12 @@ let router = createHashRouter([
       { path: 'allorders', element: <Gurad><AllOrders /></Gurad> },
       { path: 'brands', element: <Gurad><Brands /></Gurad> },
       { path: 'wishlist', element: <Gurad><Wishlist /></Gurad> },
-      { path: 'products/:brandId', element: <Gurad><Products /></Gurad> },
+      { path: 'products', element: <Gurad><Products /></Gurad> },
       { path: 'cart', element: <Gurad><Cart /></Gurad> },
       { path: 'checkout', element: <Gurad><CheckOut /></Gurad> },
       { path: 'categories', element: <Gurad><Categories /></Gurad> },
       { path: 'login', element: <AuthGurad><Login /></AuthGurad> },
       { path: '*', element: <NotFound /> },
-      { path: 'products', element: <Gurad><Products /></Gurad> },
-      { path: 'products/:categoryId', element: <Gurad><Products /></Gurad> },
       { path: 'details/:id', element: <Gurad><Details /></Gurad> },
       { path: 'register', element: <AuthGurad><Register /></AuthGurad> },
     ]

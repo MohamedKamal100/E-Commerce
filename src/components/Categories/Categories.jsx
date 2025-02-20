@@ -13,12 +13,14 @@ export default function Categories() {
           <BeatLoader color="#22c55e" size={15} />
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 my-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-10">
           {allCatProd?.data?.data.map((cat) => (
-            <Link key={cat._id} to={`/products/${cat._id}`}>
-              <div className="cardbody cursor-pointer hover:shadow-lg transition duration-300">
-                <img src={cat.image} className='w-full h-[300px] rounded-lg' alt={cat.name} />
-                <h4 className="text-center py-3 font-bold text-lg text-lime-900">{cat.name}</h4>
+            <Link key={cat._id} to={`/products?category=${cat._id}`}>
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer group relative overflow-hidden">
+                <img src={cat.image} className='w-full h-[250px] object-contain transition-transform duration-500 group-hover:scale-105' alt={cat.name} />
+                <div className="absolute inset-0 bg-black bg-opacity-30 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <h4 className="text-white text-xl font-bold">{cat.name}</h4>
+                </div>
               </div>
             </Link>
           ))}

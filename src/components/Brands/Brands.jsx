@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
 
 export default function Brands() {
-  // Fetch brands from API
-  const fetchBrands = async () => {
+
+  const getBrands = async () => {
     const { data } = await axios.get('https://ecommerce.routemisr.com/api/v1/brands');
     return data;
   };
 
   const { data: brandsData, isLoading } = useQuery({
     queryKey: ['brands'],
-    queryFn: fetchBrands,
+    queryFn: getBrands,
     refetchOnWindowFocus: false,
   });
 
@@ -30,7 +30,7 @@ export default function Brands() {
           {brandsData?.data?.map((brand) => (
             <Link
               key={brand._id}
-              to={`/products?brand=${brand._id}`} // ✅ تم تحديث الرابط
+              to={`/products?brand=${brand._id}`}
               className="group relative cursor-pointer bg-white border border-gray-300 p-4 rounded-lg shadow-md hover:shadow-lg transform transition duration-300 hover:scale-105"
             >
               <img src={brand.image} alt={brand.name} className="w-full h-40 object-contain rounded-lg" />

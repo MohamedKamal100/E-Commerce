@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { CartContext } from "../Context/CartContext";
@@ -17,8 +17,12 @@ export default function Navbar() {
   function logout() {
     localStorage.removeItem("token");
     setToken(null);
+    setIsOpen(false);
     navigate("/login");
   }
+  useEffect(() => {
+    setIsOpen(false);
+  }, [token]);
 
   return (
     <nav className="bg-white shadow-md fixed w-full top-0 left-0 right-0 z-50">
@@ -36,7 +40,8 @@ export default function Navbar() {
         </button>
 
         {token && (
-          <ul className={`lg:flex lg:items-center absolute lg:static bg-white top-16 left-0 w-full lg:w-auto shadow-lg lg:shadow-none p-5 lg:p-0 transition-all duration-300 ${isOpen ? "block" : "hidden"}`}>
+          <ul className={`lg:flex lg:items-center fixed lg:static bg-white top-16 left-0 w-full lg:w-auto shadow-lg lg:shadow-none p-5 lg:p-0 transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+            } lg:translate-x-0`}>
             {[
               { name: "Home", path: "/" },
               { name: "Products", path: "/products" },
@@ -45,7 +50,7 @@ export default function Navbar() {
 
             ].map((link, index) => (
               <li key={index} className="py-2 lg:py-0">
-                <NavLink
+                <NavLink onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
                     `text-md font-medium block px-4 py-2 rounded-lg lg:inline-block transition-colors duration-300 ${isActive ? "text-green-500" : "text-gray-800 hover:text-green-600"}`
                   }

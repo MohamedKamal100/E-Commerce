@@ -8,6 +8,7 @@ export default {
     extend: {
       animation: {
         'gradient-xy': 'gradient-xy 3s ease infinite',
+        'fade-in-out': 'fade-in-out 3s ease-in-out infinite',
       },
       keyframes: {
         'gradient-xy': {
@@ -18,9 +19,16 @@ export default {
             backgroundPosition: '100% 50%',
           },
         },
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'fade-in-out': {
+          '0%, 100%': { opacity: '0.5' },
+          '50%': { opacity: '1' },
+        },
       },
     },
-  },
-  plugins: [],
+    plugins: [],
+  }
 }
-

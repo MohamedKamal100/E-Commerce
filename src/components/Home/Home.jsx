@@ -78,7 +78,7 @@ export default function Home() {
           >
             {allCatProd?.data?.data?.map((cat) => (
               <SwiperSlide key={cat._id} className="flex flex-col items-center">
-                <Link to={`/products/${cat._id}`}>
+                <Link to={`/products?category=${cat._id}`}>
                   <img src={cat.image} className="h-[200px] w-full object-cover rounded-lg" alt={cat.name} />
                   <div className="text-center text-cyan-900 font-medium mt-2 py-6">{cat.name}</div>
                 </Link>
