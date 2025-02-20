@@ -18,7 +18,11 @@ export default function Wishlist() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6">My wish List</h2>
+      <h2 className="text-center text-2xl font-bold mb-4 text-green-500 
+  transition-all duration-700 
+  animate-fade-in-out">
+        Your Wish Lists
+      </h2>
       {wishlist?.length === 0 ? (
         <div className="text-center text-gray-600">
           <p className="text-lg">Your wishlist is empty</p>
@@ -38,7 +42,7 @@ export default function Wishlist() {
                   className="w-28 h-28 object-cover rounded-lg mr-4"
                 />
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title.slice(0, 50)} .... <Link to={`/details/${item._id}`} className="text-blue-500 hover:underline">Show More</Link></h3>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title.slice(0, 25)} .... <Link to={`/details/${item._id}`} className="text-blue-500 hover:underline">Show More</Link></h3>
                   <p className="text-green-600 font-bold text-xl">{item.price} EGP</p>
                   <button
                     onClick={() => removeFromWishlist(item._id)}
@@ -51,7 +55,7 @@ export default function Wishlist() {
               </div>
 
               {/* زر الإضافة إلى السلة */}
-              <button onClick={() => addToCart(item._id)} className="border border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-semibold rounded-lg px-4 py-2 transition">
+              <button onClick={() => addToCart(item._id)} className="border  border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-semibold rounded-lg px-4 py-2 transition">
                 add To Cart
               </button>
             </div>

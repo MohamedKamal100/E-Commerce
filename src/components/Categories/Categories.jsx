@@ -14,6 +14,8 @@ export default function Categories() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-10">
+          <h2 className="text-4xl font-extrabold text-center mb-6 text-green-700">Our Brands</h2>
+
           {allCatProd?.data?.data.map((cat) => (
             <Link key={cat._id} to={`/products?category=${cat._id}`}>
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer group relative overflow-hidden">

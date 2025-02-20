@@ -1,10 +1,11 @@
 import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8 mt-8  bottom-0 w-full">
+    <footer className="bg-gray-900 text-white py-8 mt-8 bottom-0 w-full">
       <div className="container mx-auto flex flex-col items-center text-center">
         {/* Animated Logo */}
         <motion.div
@@ -28,15 +29,20 @@ const Footer = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          {['Home', 'About', 'Services', 'Contact'].map((link, index) => (
+          {[
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+            { name: "Services", path: "/services" },
+            { name: "Contact", path: "/contactus" }
+          ].map((link, index) => (
             <motion.li
               key={index}
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.2 }}
             >
-              <a href={`#${link.toLowerCase()}`} className="hover:text-green-400 transition">
-                {link}
-              </a>
+              <Link to={link.path} className="hover:text-green-400 transition">
+                {link.name}
+              </Link>
             </motion.li>
           ))}
         </motion.ul>

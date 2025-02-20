@@ -11,7 +11,7 @@ export default function Layout() {
   return <>
 
     <Navbar />
-    <div className="container mx-auto mt-10 py-10">
+    <div className="container mx-auto mt-10 py-10 min-h-full">
       <Outlet></Outlet>
     </div>
     <Footer />
