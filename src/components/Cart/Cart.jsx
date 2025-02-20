@@ -220,7 +220,7 @@ export default function Cart() {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-12">
       <h2 className="text-center text-2xl font-bold mb-4 text-green-500 
   transition-all duration-700 
   animate-fade-in-out">

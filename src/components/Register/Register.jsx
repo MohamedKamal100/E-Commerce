@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
-import bg from "../../assets/images/image.png"; // استيراد الصورة
+
 
 export default function Register() {
   let navigate = useNavigate();
@@ -62,18 +62,14 @@ export default function Register() {
 
   return (
     <div
-      className="min-h-screen flex justify-center items-center relative overflow-hidden"
-      style={{
-        backgroundImage: `url(${bg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="min-h-screen flex justify-center items-center relative overflow-hidden bg-gradient-to-r from-green-400/100 to-blue-500/80 px-5 py-20"
+
     >
 
       <div className="absolute inset-0 bg-black opacity-40"></div>
 
       <div className="relative z-10 container max-w-lg mx-auto backdrop-blur-sm bg-white/50 shadow-lg rounded-2xl p-8">
-        <h2 className="text-3xl font-bold text-lime-400 mb-6 text-center">Register Now</h2>
+        <h2 className="text-3xl font-bold text-blue-500 mb-6 text-center ">Register Now</h2>
 
         {apiError && (
           <div className="p-4 mb-4 text-sm text-red-800 bg-red-50 rounded-lg">{apiError}</div>
@@ -91,7 +87,7 @@ export default function Register() {
                 value={formik.values[field]}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full p-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full p-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               {formik.errors[field] && formik.touched[field] && (
                 <div className="text-red-500 text-sm mt-1">{formik.errors[field]}</div>
@@ -110,7 +106,7 @@ export default function Register() {
                 value={formik.values[field]}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full p-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full p-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <span
                 className="absolute inset-y-0 right-3 flex items-center text-gray-500 cursor-pointer"
@@ -132,12 +128,12 @@ export default function Register() {
             <button
               type="submit"
               disabled={isLoading}
-              className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-50"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-50"
             >
               {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
             </button>
             <span className="font-semibold mx-10">
-              <Link to={"/login"} className="hover:text-lime-400 hover:underline text-lime-800">
+              <Link to={"/login"} className="hover:text-blue-900 hover:underline text-blue-700">
                 Login Now
               </Link>
             </span>

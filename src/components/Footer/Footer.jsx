@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8 mt-8 bottom-0 w-full">
+    <footer className="bg-gray-900 text-white py-3 bottom-0 w-full">
       <div className="container mx-auto flex flex-col items-center text-center">
         {/* Animated Logo */}
         <motion.div
@@ -22,7 +22,7 @@ const Footer = () => {
           </motion.h1>
         </motion.div>
 
-        {/* Navigation Links */}
+
         <motion.ul
           className="flex space-x-6 mt-4"
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +47,7 @@ const Footer = () => {
           ))}
         </motion.ul>
 
-        {/* Social Icons */}
+
         <motion.div
           className="flex space-x-6 mt-6"
           initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ const Footer = () => {
           ))}
         </motion.div>
 
-        {/* Copyright Text */}
+
         <motion.p
           className="mt-6 text-sm text-gray-400"
           initial={{ opacity: 0 }}
